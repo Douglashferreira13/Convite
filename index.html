@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project: Event Invite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: rgb(237, 214, 185);
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            font-size: 36px;
+            color: rgb(171, 65, 74);
+            margin-bottom: 10px;
+        }
+        h2 {
+            font-size: 24px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        #form {
+            text-align: center;
+            margin: 20px 0;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 250px;
+            margin-right: 10px;
+            transition: border-color 0.3s;
+        }
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #guestList {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            color: rgb(171, 65, 74);
+        }
+        #place {
+            color: rgb(214, 123, 26);
+            font-size: 27px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .time {
+            text-align: center;
+            font-style: italic;
+            font-size: 16px;
+        }
+        #rsvp {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .btnNo, .btnYes {
+            background: #fab325;
+            border-radius: 28px;
+            color: #ffffff;
+            font-size: 17px;
+            padding: 10px 20px;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: background 0.3s;
+        }
+        .btnYes {
+            background: #e01d1d;
+        }
+        .btnNo:hover {
+            background: #ffee30;
+        }
+        .btnYes:hover {
+            background: #991a1a;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1 id="names">Dia do Amigo, Célula Maranata</h1>
+    <h2 class="presentation">Adicione o nome do seu amigo!</h2>
+    
+    <div id="form">
+        <input type="text" id="friendName" placeholder="Nome do amigo">
+        <button onclick="addName()">Adicionar</button>
+    </div>
+    
+    <div id="guestList"></div>
+    
+    <h2 class="presentation what">Sua presença é fundamental</h2>
+    <h1 id="place">Bairro Carlos Prates <br> Dia 07/11/2024</h1>
+    
+    <h2 class="time">Às 19:30 <br></h2>
+    
+    <div id="rsvp">
+        <h2>Por favor, confirme sua presença abaixo</h2>
+        <div style="margin-top: 20px;">
+            <a href="#" class="btnYes" onclick="alert('Ótimo! Te vejo em breve :D')">Sim, eu vou!</a>
+            <a href="#" class="btnNo" onclick="alert('Que pena.. te vejo na próxima..  :( ')">Fica para a próxima!</a>
+        </div>
+    </div>
+
+    <script>
+        const guestList = [];
+
+        function addName() {
+            const input = document.getElementById('friendName');
+            const name = input.value.trim();
+            if (name) {
+                guestList.push(name);
+                input.value = ''; // Limpa o campo
+                displayGuestList();
+            } else {
+                alert('Por favor, insira um nome.');
+            }
+        }
+
+        function displayGuestList() {
+            const listDiv = document.getElementById('guestList');
+            listDiv.innerHTML = '<h3>Convidados:</h3>' + guestList.map(name => `<p>${name}</p>`).join('');
+        }
+    </script>
+    
+</body>
+</html>
+
+
